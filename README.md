@@ -32,8 +32,8 @@ main - this is the starting point of the application, contains main app widget a
 
 The app supports:
 
-1. iOS 12 minimum version, screen size >= 4.7 <= 6.7 inches
-2. Android 5.0 (API 21) minimum version, screen size >=5.0 <= 6.9 inches
+1. iOS 12 minimum version
+2. Android 5.0 (API 21) minimum version
 
 ## FAQ
 
