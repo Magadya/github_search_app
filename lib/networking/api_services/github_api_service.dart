@@ -2,10 +2,11 @@ import 'dart:io';
 
 import 'package:date_format/date_format.dart';
 import 'dart:convert' show json, utf8;
-import '../details_repo/models/issue_model.dart';
-import '../details_repo/models/pull_data_model.dart';
-import '../search_repo/models/repo_data_model.dart';
-import 'api_constants.dart';
+
+import '../../modules/details_repo/models/issue_model.dart';
+import '../../modules/details_repo/models/pull_data_model.dart';
+import '../../modules/search_repo/models/repo_data_model.dart';
+import '../api_constants.dart';
 
 class GithubApiService {
   static final HttpClient _httpClient = HttpClient();

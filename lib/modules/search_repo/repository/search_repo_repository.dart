@@ -1,4 +1,4 @@
-import '../../api_services/github_api_service.dart';
+import '../../../networking/api_services/github_api_service.dart';
 import '../models/repo_data_model.dart';
 
 class SearchRepository {

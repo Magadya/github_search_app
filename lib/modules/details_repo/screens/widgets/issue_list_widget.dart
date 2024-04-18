@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../utils/constants/app_strings.dart';
+import '../../../../resources/strings/app_strings.dart';
 import '../../models/issue_model.dart';
 import 'issue_item.dart';
 

@@ -3,7 +3,6 @@ import 'package:github_search_app/modules/search_repo/bloc/search_repo_bloc.dart
 import 'package:github_search_app/modules/search_repo/bloc/search_repo_event.dart';
 import 'package:github_search_app/modules/search_repo/bloc/search_repo_state.dart';
 import 'package:github_search_app/modules/search_repo/models/repo_data_model.dart';
-import 'package:mockito/annotations.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:mockito/mockito.dart';
 

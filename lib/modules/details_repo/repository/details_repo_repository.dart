@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:github_search_app/modules/details_repo/models/pull_data_model.dart';
 
-import '../../api_services/github_api_service.dart';
+import '../../../networking/api_services/github_api_service.dart';
 import '../models/issue_model.dart';
 
 class DetailsRepoRepository {

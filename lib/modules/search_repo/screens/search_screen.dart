@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_search_app/modules/search_repo/screens/widgets/repo_item.dart';
 
-import '../../../utils/constants/app_strings.dart';
+import '../../../resources/strings/app_strings.dart';
 import '../../details_repo/screens/details_repo_screen.dart';
 import '../bloc/search_repo_bloc.dart';
 import '../bloc/search_repo_event.dart';

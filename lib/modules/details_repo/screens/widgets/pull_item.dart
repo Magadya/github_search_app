@@ -2,7 +2,7 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:github_search_app/modules/details_repo/models/pull_data_model.dart';
 import 'package:github_search_app/modules/details_repo/models/state_enum.dart';
-import 'package:github_search_app/utils/constants/app_constants.dart';
+import 'package:github_search_app/resources/app_constants.dart';
 
 class PullItem extends StatelessWidget {
   final PullDataModel item;

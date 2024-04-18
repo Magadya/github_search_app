@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:github_search_app/modules/details_repo/models/issue_model.dart';
 import 'package:github_search_app/modules/details_repo/models/state_enum.dart';
 
-import '../../../../utils/constants/app_constants.dart';
+import '../../../../resources/app_constants.dart';
 
 class IssueItem extends StatelessWidget {
   final IssueModel item;

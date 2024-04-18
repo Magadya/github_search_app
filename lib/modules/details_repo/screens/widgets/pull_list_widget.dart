@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:github_search_app/modules/details_repo/screens/widgets/pull_item.dart';
 
-import '../../../../utils/constants/app_strings.dart';
+import '../../../../resources/strings/app_strings.dart';
 import '../../models/pull_data_model.dart';
 
 class PullListWidget extends StatelessWidget {

@@ -3,6 +3,7 @@ import 'package:github_search_app/modules/details_repo/screens/widgets/issue_lis
 import 'package:github_search_app/modules/details_repo/screens/widgets/pull_list_widget.dart';
 import 'package:github_search_app/modules/details_repo/screens/widgets/scrollable_content_widget.dart';
 
+import '../../../resources/strings/app_strings.dart';
 import '../../search_repo/models/repo_data_model.dart';
 import '../repository/details_repo_repository.dart';
 
@@ -55,8 +56,8 @@ class _DetailsRepoScreenState extends State<DetailsRepoScreen> {
                   preferredSize: const Size.fromHeight(kToolbarHeight),
                   child: TabBar(
                     tabs: [
-                      Tab(icon: Text('Issues', style: Theme.of(context).textTheme.titleMedium)),
-                      Tab(icon: Text('Pull Requests', style: Theme.of(context).textTheme.titleMedium)),
+                      Tab(icon: Text(AppStrings.issues, style: Theme.of(context).textTheme.titleMedium)),
+                      Tab(icon: Text(AppStrings.pullRequests, style: Theme.of(context).textTheme.titleMedium)),
                     ],
                   ),
                 ),

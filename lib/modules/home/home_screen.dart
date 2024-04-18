@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../utils/constants/app_strings.dart';
+import '../../resources/strings/app_strings.dart';
 import '../details_repo/screens/details_repo_screen.dart';
 import '../search_repo/bloc/search_repo_bloc.dart';
 import '../search_repo/bloc/search_repo_event.dart';
