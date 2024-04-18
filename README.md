@@ -1,16 +1,49 @@
 # github_search_app
 
-A new Flutter project.
+## Introduction
 
-## Getting Started
+This is a **GitHub Search App**  applications for searching the Github repository, and also shows all issues and pull requests of the repository
 
-This project is a starting point for a Flutter application.
+- **flutter_bloc** - we use it for the state management across the app
 
-A few resources to get you started if this is your first Flutter project:
+- Android Studio **4.1.0** or higher, or VSCode of any version
+- XCode **13.4.0** or higher
+- Gradle **7.0.3**
+- Flutter **3.19.5**
+- Dart **>=3.0.0 <4.0.0**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Here is the folder structure we have been using in this project
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+> lib/
+> |- modules/
+> |- networking/
+> |- resources/
+> |- main.dart
+
+ Now, let's dive into the lib folder which has the main code for the application.
+
+
+modules - contains application modules that include flows/features
+networking - contains the network layer of application
+resources - this directory contains the constants for `theme`, `api endpoints`, `preferences` and etc.
+main - this is the starting point of the application, contains main app widget and an initial setup of the app
+
+## Requirements to mobile devices
+
+The app supports:
+
+1. iOS 12 minimum version, screen size >= 4.7 <= 6.7 inches
+2. Android 5.0 (API 21) minimum version, screen size >=5.0 <= 6.9 inches
+
+## FAQ
+
+1. If you have issues running the app or installing the packages, run:
+
+```bash
+flutter pub cache repair
+flutter clean
+flutter pub get
+cd ios
+rm -rf Podfile.lock Pods/ .symlinks Flutter/Flutter.podspec
+pod install
+pod repo update
