@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:github_search_app/modules/details_repo/screens/widgets/pull_item.dart';
+import 'package:github_search_app/modules/details_repo/screens/widgets/scrollable_content_widget.dart';
 
 import '../../../../resources/strings/app_strings.dart';
 import '../../models/pull_data_model.dart';
@@ -15,21 +16,23 @@ class PullListWidget extends StatelessWidget {
       future: future,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error.toString()}'));
         } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
           final items = snapshot.data!;
           return Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: items
-                  .map((item) => PullItem(
-                        item: item,
-                        onTap: () {},
-                      ))
-                  .toList(),
+            child: ScrollableContentWidget(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: items
+                    .map((item) => PullItem(
+                          item: item,
+                          onTap: () {},
+                        ))
+                    .toList(),
+              ),
             ),
           );
         } else {

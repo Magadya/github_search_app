@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:github_search_app/modules/details_repo/screens/widgets/scrollable_content_widget.dart';
 
 import '../../../../resources/strings/app_strings.dart';
 import '../../models/issue_model.dart';
@@ -15,24 +16,23 @@ class IssueListWidget extends StatelessWidget {
       future: future,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Padding(
-            padding: EdgeInsets.all(20),
-            child: CircularProgressIndicator(),
-          );
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error.toString()}'));
         } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
           final issues = snapshot.data!;
           return Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: issues
-                  .map((issue) => IssueItem(
-                        item: issue,
-                        onTap: () {},
-                      ))
-                  .toList(),
+            child: ScrollableContentWidget(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: issues
+                    .map((issue) => IssueItem(
+                          item: issue,
+                          onTap: () {},
+                        ))
+                    .toList(),
+              ),
             ),
           );
         } else {

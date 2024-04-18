@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:github_search_app/modules/details_repo/screens/widgets/issue_list_widget.dart';
 import 'package:github_search_app/modules/details_repo/screens/widgets/pull_list_widget.dart';
-import 'package:github_search_app/modules/details_repo/screens/widgets/scrollable_content_widget.dart';
-
 import '../../../resources/strings/app_strings.dart';
 import '../../search_repo/models/repo_data_model.dart';
 import '../repository/details_repo_repository.dart';
@@ -63,27 +61,11 @@ class _DetailsRepoScreenState extends State<DetailsRepoScreen> {
                 ),
                 body: TabBarView(
                   children: [
-                    Center(
-                      child: ScrollableContentWidget(
-                        child: Column(
-                          children: [
-                            IssueListWidget(
-                              future: detailsRepository.fetchAllIssues(widget.repo.owner, widget.repo.name),
-                            ),
-                          ],
-                        ),
-                      ),
+                    IssueListWidget(
+                      future: detailsRepository.fetchAllIssues(widget.repo.owner, widget.repo.name),
                     ),
-                    Center(
-                      child: ScrollableContentWidget(
-                        child: Column(
-                          children: [
-                            PullListWidget(
-                              future: detailsRepository.fetchAllPulls(widget.repo.owner, widget.repo.name),
-                            ),
-                          ],
-                        ),
-                      ),
+                    PullListWidget(
+                      future: detailsRepository.fetchAllPulls(widget.repo.owner, widget.repo.name),
                     ),
                   ],
                 ),
