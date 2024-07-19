@@ -7,4 +7,5 @@ class AppStrings {
   static const noPulls = 'No Pull requests in this repository';
   static const typeToSearch = 'Type at least 4 characters to start the search.';
   static const pullToRefresh = 'Pull to refresh.';
+  static const smthGetWrong = 'Something get wrong';
 }

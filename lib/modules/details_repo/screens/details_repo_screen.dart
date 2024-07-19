@@ -3,7 +3,7 @@ import 'package:github_search_app/modules/details_repo/screens/widgets/issue_lis
 import 'package:github_search_app/modules/details_repo/screens/widgets/pull_list_widget.dart';
 import '../../../resources/strings/app_strings.dart';
 import '../../search_repo/models/repo_data_model.dart';
-import '../repository/details_repo_repository.dart';
+import '../repository/issues_repository.dart';
 
 class DetailsRepoScreen extends StatefulWidget {
   final RepoDataModel repo;
@@ -18,6 +18,7 @@ class DetailsRepoScreen extends StatefulWidget {
 }
 
 class _DetailsRepoScreenState extends State<DetailsRepoScreen> {
+
   @override
   void initState() {
     super.initState();
@@ -25,7 +26,7 @@ class _DetailsRepoScreenState extends State<DetailsRepoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final detailsRepository = DetailsRepoRepository();
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.repo.name),
@@ -37,11 +38,11 @@ class _DetailsRepoScreenState extends State<DetailsRepoScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(widget.repo.name, style: Theme.of(context).textTheme.titleLarge),
-                Text('Owner: ${widget.repo.owner}', style: Theme.of(context).textTheme.titleMedium),
-                Text('Language: ${widget.repo.language}', style: Theme.of(context).textTheme.titleMedium),
+                Text(widget.repo.name, style: theme.textTheme.titleLarge),
+                Text('Owner: ${widget.repo.owner}', style: theme.textTheme.titleMedium),
+                Text('Language: ${widget.repo.language}', style: theme.textTheme.titleMedium),
                 const SizedBox(height: 8),
-                Text('Description: ${widget.repo.description}', style: Theme.of(context).textTheme.bodyMedium),
+                Text('Description: ${widget.repo.description}', style: theme.textTheme.bodyMedium),
               ],
             ),
           ),
@@ -54,18 +55,22 @@ class _DetailsRepoScreenState extends State<DetailsRepoScreen> {
                   preferredSize: const Size.fromHeight(kToolbarHeight),
                   child: TabBar(
                     tabs: [
-                      Tab(icon: Text(AppStrings.issues, style: Theme.of(context).textTheme.titleMedium)),
-                      Tab(icon: Text(AppStrings.pullRequests, style: Theme.of(context).textTheme.titleMedium)),
+                      Tab(icon: Text(AppStrings.issues, style: theme.textTheme.titleMedium)),
+                      Tab(icon: Text(AppStrings.pullRequests, style: theme.textTheme.titleMedium)),
                     ],
                   ),
                 ),
                 body: TabBarView(
                   children: [
                     IssueListWidget(
-                      future: detailsRepository.fetchAllIssues(widget.repo.owner, widget.repo.name),
+                       key: ValueKey('${widget.repo.owner}_${widget.repo.name}_issues'),
+                      owner: widget.repo.owner,
+                      name: widget.repo.name,
                     ),
                     PullListWidget(
-                      future: detailsRepository.fetchAllPulls(widget.repo.owner, widget.repo.name),
+                      key: ValueKey('${widget.repo.owner}_${widget.repo.name}_pulls'),
+                      owner: widget.repo.owner,
+                      name: widget.repo.name,
                     ),
                   ],
                 ),

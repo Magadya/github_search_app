@@ -3,12 +3,14 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i5;
 
-import 'package:github_search_app/modules/search_repo/models/repo_data_model.dart'
-    as _i4;
+import 'package:dio/dio.dart' as _i3;
 import 'package:github_search_app/modules/search_repo/repository/search_repo_repository.dart'
+    as _i4;
+import 'package:github_search_app/source/networking/api_result_handler.dart'
     as _i2;
+import 'package:github_search_app/source/networking/network.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -24,34 +26,149 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeApiResults_0 extends _i1.SmartFake implements _i2.ApiResults {
+  _FakeApiResults_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeDio_1 extends _i1.SmartFake implements _i3.Dio {
+  _FakeDio_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [SearchRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSearchRepository extends _i1.Mock implements _i2.SearchRepository {
+class MockSearchRepository extends _i1.Mock implements _i4.SearchRepository {
   MockSearchRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<List<_i4.RepoDataModel>> getTrendingRepositories() =>
-      (super.noSuchMethod(
+  _i5.Future<_i2.ApiResults> getTrendingRepositories() => (super.noSuchMethod(
         Invocation.method(
           #getTrendingRepositories,
           [],
         ),
-        returnValue:
-            _i3.Future<List<_i4.RepoDataModel>>.value(<_i4.RepoDataModel>[]),
-      ) as _i3.Future<List<_i4.RepoDataModel>>);
+        returnValue: _i5.Future<_i2.ApiResults>.value(_FakeApiResults_0(
+          this,
+          Invocation.method(
+            #getTrendingRepositories,
+            [],
+          ),
+        )),
+      ) as _i5.Future<_i2.ApiResults>);
 
   @override
-  _i3.Future<List<_i4.RepoDataModel>> getRepositoriesWithSearchQuery(
-          String? query) =>
+  _i5.Future<_i2.ApiResults> getRepositoriesWithSearchQuery(String? query) =>
       (super.noSuchMethod(
         Invocation.method(
           #getRepositoriesWithSearchQuery,
           [query],
         ),
-        returnValue:
-            _i3.Future<List<_i4.RepoDataModel>>.value(<_i4.RepoDataModel>[]),
-      ) as _i3.Future<List<_i4.RepoDataModel>>);
+        returnValue: _i5.Future<_i2.ApiResults>.value(_FakeApiResults_0(
+          this,
+          Invocation.method(
+            #getRepositoriesWithSearchQuery,
+            [query],
+          ),
+        )),
+      ) as _i5.Future<_i2.ApiResults>);
+}
+
+/// A class which mocks [NetworkDio].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockNetworkDio extends _i1.Mock implements _i6.NetworkDio {
+  MockNetworkDio() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Dio get dio => (super.noSuchMethod(
+        Invocation.getter(#dio),
+        returnValue: _FakeDio_1(
+          this,
+          Invocation.getter(#dio),
+        ),
+      ) as _i3.Dio);
+
+  @override
+  set dio(_i3.Dio? _dio) => super.noSuchMethod(
+        Invocation.setter(
+          #dio,
+          _dio,
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  _i5.Future<_i2.ApiResults> getData({
+    required String? endPoint,
+    Map<String, dynamic>? queryParameters,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getData,
+          [],
+          {
+            #endPoint: endPoint,
+            #queryParameters: queryParameters,
+          },
+        ),
+        returnValue: _i5.Future<_i2.ApiResults>.value(_FakeApiResults_0(
+          this,
+          Invocation.method(
+            #getData,
+            [],
+            {
+              #endPoint: endPoint,
+              #queryParameters: queryParameters,
+            },
+          ),
+        )),
+      ) as _i5.Future<_i2.ApiResults>);
+
+  @override
+  _i5.Future<_i2.ApiResults> postData({
+    required String? endPoint,
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? queryParameters,
+    bool? formData = true,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #postData,
+          [],
+          {
+            #endPoint: endPoint,
+            #data: data,
+            #queryParameters: queryParameters,
+            #formData: formData,
+          },
+        ),
+        returnValue: _i5.Future<_i2.ApiResults>.value(_FakeApiResults_0(
+          this,
+          Invocation.method(
+            #postData,
+            [],
+            {
+              #endPoint: endPoint,
+              #data: data,
+              #queryParameters: queryParameters,
+              #formData: formData,
+            },
+          ),
+        )),
+      ) as _i5.Future<_i2.ApiResults>);
 }

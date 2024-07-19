@@ -1,49 +1,78 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_search_app/modules/details_repo/screens/widgets/pull_item.dart';
 import 'package:github_search_app/modules/details_repo/screens/widgets/scrollable_content_widget.dart';
 
 import '../../../../resources/strings/app_strings.dart';
+import '../../cubit/pulls_cubit.dart';
+import '../../cubit/pulls_state.dart';
 import '../../models/pull_data_model.dart';
 
-class PullListWidget extends StatelessWidget {
-  final Future<List<PullDataModel>> future;
+class PullListWidget extends StatefulWidget {
+  final String owner;
+  final String name;
 
-  const PullListWidget({super.key, required this.future});
+  const PullListWidget({required this.owner, required this.name, super.key});
+
+  @override
+  State<PullListWidget> createState() => _PullListWidgetState();
+}
+
+class _PullListWidgetState extends State<PullListWidget> with AutomaticKeepAliveClientMixin<PullListWidget> {
+  @override
+  void initState() {
+    super.initState();
+    // Any additional initialization if needed
+  }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<PullDataModel>>(
-      future: future,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasError) {
-          return Center(child: Text('Error: ${snapshot.error.toString()}'));
-        } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-          final items = snapshot.data!;
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ScrollableContentWidget(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: items
-                    .map((item) => PullItem(
-                          item: item,
-                          onTap: () {},
-                        ))
-                    .toList(),
-              ),
-            ),
-          );
-        } else {
-          return const Center(
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(AppStrings.noPulls),
-            ),
-          );
-        }
-      },
+    // Ensure the keep-alive functionality is properly integrated
+    return BlocProvider<PullsCubit>(
+      create: (context) => PullsCubit()..initStateEvent(widget.owner, widget.name),
+      child: BlocConsumer<PullsCubit, PullsState>(
+        listener: (context, state) {
+          if (state.status == PullsStatus.error) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.backendError ?? AppStrings.smthGetWrong)),
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state.status == PullsStatus.initialLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state.status == PullsStatus.pending) {
+            if ((state.items ?? []).isNotEmpty) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ScrollableContentWidget(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: state.items!
+                        .map((pull) => PullItem(
+                      item: pull,
+                      onTap: () {},
+                    ))
+                        .toList(),
+                  ),
+                ),
+              );
+            } else {
+              return const Center(
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(AppStrings.noPulls),
+                ),
+              );
+            }
+          }
+          return const SizedBox();
+        },
+      ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
+

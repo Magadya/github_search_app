@@ -47,12 +47,12 @@ class _SearchScreenState extends State<SearchScreen> {
         title: TextField(
           controller: _searchQueryController,
           autofocus: true,
-          decoration: const InputDecoration(
+          decoration:  InputDecoration(
             hintText: AppStrings.searchHintText,
             border: InputBorder.none,
-            hintStyle: TextStyle(color: Colors.black),
+            hintStyle: Theme.of(context).textTheme.bodyMedium ,
           ),
-          style: const TextStyle(color: Colors.black, fontSize: 16.0),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
       body: BlocConsumer<SearchRepoBloc, SearchRepoState>(

@@ -8,6 +8,7 @@ import '../search_repo/bloc/search_repo_event.dart';
 import '../search_repo/bloc/search_repo_state.dart';
 import '../search_repo/screens/search_screen.dart';
 import '../search_repo/screens/widgets/repo_item.dart';
+import 'widgets/settings_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -28,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const SettingsWidget(),
       appBar: AppBar(
         title: const Text('GitHub Repo Search'),
         actions: [
