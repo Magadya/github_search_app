@@ -24,14 +24,10 @@ class PullListWidget extends StatefulWidget {
 }
 
 class _PullListWidgetState extends State<PullListWidget> with AutomaticKeepAliveClientMixin<PullListWidget> {
-  @override
-  void initState() {
-    super.initState();
-    // Any additional initialization if needed
-  }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     // Ensure the keep-alive functionality is properly integrated
     return BlocProvider<PullsCubit>(
       create: (context) => PullsCubit(PullsRepositoryImpl())..initStateEvent(widget.owner, widget.name),

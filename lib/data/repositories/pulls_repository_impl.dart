@@ -1,10 +1,9 @@
-import 'package:github_search_app/data/datasource/issues_datasource.dart';
 import 'package:github_search_app/data/datasource/pulls_datasource.dart';
 
 import '../../core/networking/api_result_handler.dart';
 import '../../core/networking/errors/custom_exception.dart';
 
-import '../../domain/repositories/issues_repository.dart';
+
 import '../../domain/repositories/pulls_repository.dart';
 import '../models/pull_data_model.dart';
 

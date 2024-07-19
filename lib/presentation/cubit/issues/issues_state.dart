@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 
 import '../../../data/models/issue_model.dart';
 

@@ -20,14 +20,10 @@ class IssueListWidget extends StatefulWidget {
 }
 
 class _IssueListWidgetState extends State<IssueListWidget> with AutomaticKeepAliveClientMixin<IssueListWidget> {
-  @override
-  void initState() {
-    super.initState();
-    // Any additional initialization if needed
-  }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     // Ensure the keep-alive functionality is properly integrated
     return BlocProvider<IssuesCubit>(
       create: (context) => IssuesCubit(IssuesRepositoryImpl())..initStateEvent(widget.owner, widget.name),
