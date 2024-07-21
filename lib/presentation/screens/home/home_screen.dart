@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_search_app/domain/extensions/extensions.dart';
 
 import '../../../core/resources/strings/app_strings.dart';
+import '../../bloc/home_repo/home_repo_bloc.dart';
+import '../../bloc/home_repo/home_repo_event.dart';
+import '../../bloc/home_repo/home_repo_state.dart';
 import '../../bloc/search_repo/search_repo_bloc.dart';
 import '../../bloc/search_repo/search_repo_event.dart';
 import '../../bloc/search_repo/search_repo_state.dart';
@@ -23,12 +26,13 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<SearchRepoBloc>().add(SearchRefreshRequested());
+      context.read<HomeRepoBloc>().add(HomeInitialRequested());
     });
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       drawer: const SettingsWidget(),
       appBar: AppBar(
@@ -45,14 +49,15 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: BlocBuilder<SearchRepoBloc, SearchRepoState>(
+      body: BlocBuilder<HomeRepoBloc, HomeRepoState>(
         builder: (context, state) {
-          if (state is SearchRepoLoadingState) {
+          print('Bloc state after debounce HOME === : ${context.read<HomeRepoBloc>().state}');
+          if (state is HomeRepoLoadingState) {
             return const Center(child: CircularProgressIndicator());
-          } else if (state is SearchRepoLoadedState) {
+          } else if (state is HomeRepoLoadedState) {
             return RefreshIndicator(
               onRefresh: () async {
-                context.read<SearchRepoBloc>().add(SearchRefreshRequested());
+                context.read<HomeRepoBloc>().add(HomeInitialRequested());
               },
               child: ListView.builder(
                 itemCount: state.repos.length,
@@ -67,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             );
-          } else if (state is SearchRepoErrorState) {
+          } else if (state is HomeRepoErrorState) {
             return Center(child: Text(state.message));
           }
           return const Center(child: Text(AppStrings.pullToRefresh));

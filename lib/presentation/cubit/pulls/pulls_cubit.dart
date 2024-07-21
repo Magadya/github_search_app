@@ -1,7 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
-
 import '../../../domain/repositories/pulls_repository.dart';
 import 'pulls_state.dart';
 

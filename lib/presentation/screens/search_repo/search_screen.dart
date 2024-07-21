@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:github_search_app/core/resources/app_constants.dart';
 import 'package:github_search_app/domain/extensions/extensions.dart';
 
 import '../../../core/resources/strings/app_strings.dart';
@@ -10,7 +11,6 @@ import '../../../presentation/bloc/search_repo/search_repo_state.dart';
 import '../../../presentation/bloc/search_repo/search_repo_bloc.dart';
 import '../details_repo/details_repo_screen.dart';
 import 'widgets/repo_item.dart';
-
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -46,20 +46,31 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.cancel_outlined),
+            onPressed: () {
+              _searchQueryController.clear();
+            },
+          ),
+        ],
         title: TextField(
+          key: AppConstants.keySearchText,
           controller: _searchQueryController,
           autofocus: true,
-          decoration:  InputDecoration(
+          decoration: InputDecoration(
             hintText: AppStrings.searchHintText,
             border: InputBorder.none,
-            hintStyle: Theme.of(context).textTheme.bodyMedium ,
+            hintStyle: Theme.of(context).textTheme.bodyMedium,
           ),
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
       body: BlocConsumer<SearchRepoBloc, SearchRepoState>(
+        buildWhen: (previous, current) => previous != current,
         listener: (context, state) {
           if (state is SearchRepoErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.message)));
@@ -85,7 +96,7 @@ class _SearchScreenState extends State<SearchScreen> {
               },
             );
           } else if (state is SearchRepoErrorState) {
-            return  Center(child: Text(state.message));
+            return Center(child: Text(state.message));
           }
           return const Center(child: Text(AppStrings.typeToSearch));
         },

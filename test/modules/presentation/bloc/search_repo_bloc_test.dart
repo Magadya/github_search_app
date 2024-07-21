@@ -3,20 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:github_search_app/core/resources/strings/app_strings.dart';
 import 'package:github_search_app/data/models/repo_data_model.dart';
 import 'package:github_search_app/domain/repositories/search_repository.dart';
 import 'package:github_search_app/presentation/bloc/search_repo/search_repo_event.dart';
-import 'package:github_search_app/presentation/screens/search_repo/search_screen.dart';
 import 'package:mockito/mockito.dart';
-import 'package:mockito/annotations.dart';
-// Adjust the import according to your project structure
-import 'package:github_search_app/presentation/bloc/search_repo/search_repo_bloc.dart'; // Adjust the import according to your project structure
-import 'package:github_search_app/presentation/bloc/search_repo/search_repo_state.dart'; // Adjust the import according to your project structure
-import '../mocks/mock_search_repository.mocks.dart'; // Adjust the import according to your generated mock file
-
-
-import '../mocks/mock_search_repository.mocks.dart';
+import 'package:github_search_app/presentation/bloc/search_repo/search_repo_bloc.dart';
+import 'package:github_search_app/presentation/bloc/search_repo/search_repo_state.dart';
+import '../../mocks/mock_search.mocks.dart';
 
 void main() {
   final sl = GetIt.instance;

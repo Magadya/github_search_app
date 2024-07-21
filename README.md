@@ -15,9 +15,10 @@ This is a **GitHub Search App**  applications for searching the Github repositor
 Here is the folder structure we have been using in this project
 
 > lib/
-> |- modules/
-> |- networking/
-> |- resources/
+> |- core/
+> |- data/
+> |- domain/
+> |- presentation/
 > |- main.dart
 
  Now, let's dive into the lib folder which has the main code for the application.

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_search_app/core/local/my_shared_preferences.dart';
+import 'package:github_search_app/presentation/bloc/home_repo/home_repo_bloc.dart';
 import 'package:github_search_app/presentation/cubit/global/global_cubit.dart';
 import 'package:github_search_app/presentation/screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
@@ -54,7 +55,7 @@ class _MyAppState extends State<MyApp> {
             title: 'GitHub Repo Search',
             theme: globalCubit.isLightTheme ? Themes.lightTheme : Themes.darkTheme,
             home: BlocProvider(
-              create: (context) => sl<SearchRepoBloc>(),
+              create: (context) => sl<HomeRepoBloc>(),
               child: const HomeScreen(),
             ),
           );
