@@ -24,6 +24,7 @@ class SettingsWidget extends StatelessWidget {
             leading: const Icon(Icons.dark_mode_outlined),
             title: const Text('Theme'),
             onTap: () => {
+              context.pop(),
               context.push(const ThemeScreen()),
             },
           ),

@@ -32,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       drawer: const SettingsWidget(),
       appBar: AppBar(
@@ -51,7 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: BlocBuilder<HomeRepoBloc, HomeRepoState>(
         builder: (context, state) {
-          print('Bloc state after debounce HOME === : ${context.read<HomeRepoBloc>().state}');
           if (state is HomeRepoLoadingState) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is HomeRepoLoadedState) {
