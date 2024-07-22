@@ -24,9 +24,10 @@ Here is the folder structure we have been using in this project
  Now, let's dive into the lib folder which has the main code for the application.
 
 
-modules - contains application modules that include flows/features
-networking - contains the network layer of application
-resources - this directory contains the constants for `theme`, `api endpoints`, `preferences` and etc.
+presentation - contains the UI of the application, directory contains the screens, widgets, and bloc/cubit for the state management
+domain - contains the business logic of the application, directory contains the repository
+data - contains the data layer of the application, directory contains the data sources, repository, and model
+core - contains the network layer of application, directory contains the constants for `theme`, `api endpoints`, `preferences` and etc.
 main - this is the starting point of the application, contains main app widget and an initial setup of the app
 
 ## Requirements to mobile devices
