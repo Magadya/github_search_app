@@ -11,10 +11,10 @@ class SearchRepoBloc extends Bloc<SearchRepoEvent, SearchRepoState> {
 
   SearchRepoBloc({required this.searchRepository}) : super(SearchRepoInitialState()) {
     on<SearchQueryChanged>(
-          (event, emit) => _onSearchQueryChanged(event, emit),
+      (event, emit) => _onSearchQueryChanged(event, emit),
       transformer: debounce<SearchQueryChanged>(const Duration(milliseconds: 500)),
     );
-    on<SearchRefreshRequested>(_onSearchRefreshRequested);
+
     on<SearchClearSearch>(_onSearchClearSearch);
   }
 
@@ -22,16 +22,6 @@ class SearchRepoBloc extends Bloc<SearchRepoEvent, SearchRepoState> {
     emit(SearchRepoLoadingState());
     try {
       final apiResults = await searchRepository.getRepositoriesWithSearchQuery(event.query);
-      emit(SearchRepoLoadedState(apiResults));
-    } catch (e) {
-      emit(SearchRepoErrorState(e.toString()));
-    }
-  }
-
-  Future<void> _onSearchRefreshRequested(SearchRefreshRequested event, Emitter<SearchRepoState> emit) async {
-    emit(SearchRepoLoadingState());
-    try {
-      final apiResults = await searchRepository.getTrendingRepositories();
       emit(SearchRepoLoadedState(apiResults));
     } catch (e) {
       emit(SearchRepoErrorState(e.toString()));

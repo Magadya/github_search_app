@@ -3,11 +3,9 @@ import 'package:get_it/get_it.dart';
 import 'package:github_search_app/core/networking/api_constants.dart';
 import 'package:github_search_app/core/networking/network.dart';
 import 'package:mockito/mockito.dart';
-import 'package:github_search_app/data/datasource/pulls_datasource.dart';
 import 'package:github_search_app/data/models/pull_data_model.dart';
 import 'package:github_search_app/data/repositories/pulls_repository_impl.dart';
 import 'package:github_search_app/core/networking/api_result_handler.dart';
-import 'package:github_search_app/core/networking/errors/custom_exception.dart';
 
 import '../mocks/mock_network.mocks.dart';
 
@@ -25,8 +23,8 @@ void main() {
   });
 
   group('fetchAllPulls', () {
-    final owner = 'Magadya';
-    final name = 'Magadya.github.io';
+    const owner = 'Magadya';
+    const name = 'Magadya.github.io';
 
     test('should return a list of PullDataModel when ApiSuccess is returned', () async {
       // Arrange

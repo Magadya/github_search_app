@@ -7,8 +7,6 @@ import '../../bloc/home_repo/home_repo_bloc.dart';
 import '../../bloc/home_repo/home_repo_event.dart';
 import '../../bloc/home_repo/home_repo_state.dart';
 import '../../bloc/search_repo/search_repo_bloc.dart';
-import '../../bloc/search_repo/search_repo_event.dart';
-import '../../bloc/search_repo/search_repo_state.dart';
 import '../details_repo/details_repo_screen.dart';
 import '../search_repo/search_screen.dart';
 import '../search_repo/widgets/repo_item.dart';

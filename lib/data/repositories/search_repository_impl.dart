@@ -26,16 +26,4 @@ class SearchRepoDataSourceImpl implements SearchRepository {
     }
   }
 
-  @override
-  Future<List<RepoDataModel>> getTrendingRepositories() async {
-    final apiResults = await _source.getTrendingRepositories();
-    if (apiResults is ApiSuccess) {
-      final items = RepoDataModel.mapJSONStringToList(apiResults.data['items'] ?? []);
-      return items;
-    } else if (apiResults is ApiFailure) {
-      throw CustomException(apiResults.message);
-    } else {
-      throw CustomException('Unexpected API result');
-    }
-  }
 }

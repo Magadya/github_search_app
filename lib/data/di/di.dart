@@ -4,7 +4,8 @@ import 'package:github_search_app/presentation/bloc/home_repo/home_repo_bloc.dar
 
 import '../../presentation/bloc/search_repo/search_repo_bloc.dart';
 import '../../presentation/cubit/global/global_cubit.dart';
-import '../repositories/search_repopository_impl.dart';
+import '../repositories/home_repository_impl.dart';
+import '../repositories/search_repository_impl.dart';
 import '../../core/local/my_shared_preferences.dart';
 import '../../core/networking/network.dart';
 
@@ -25,6 +26,6 @@ Future<void> init() async {
         () => SearchRepoBloc(searchRepository: SearchRepoDataSourceImpl()),
   );
   sl.registerLazySingleton<HomeRepoBloc>(
-        () => HomeRepoBloc(searchRepository: SearchRepoDataSourceImpl()),
+        () => HomeRepoBloc(homeRepository: HomeRepoDataSourceImpl()),
   );
 }

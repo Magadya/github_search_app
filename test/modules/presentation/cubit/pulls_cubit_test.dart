@@ -1,10 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:github_search_app/core/networking/api_result_handler.dart';
-import 'package:github_search_app/domain/repositories/pulls_repository.dart';
 import 'package:github_search_app/presentation/cubit/pulls/pulls_cubit.dart';
 import 'package:github_search_app/presentation/cubit/pulls/pulls_state.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import '../../mocks/mock_pulls.mocks.dart';
 

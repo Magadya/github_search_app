@@ -35,10 +35,10 @@ class _ThemeScreenState extends State<ThemeScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: context.pop,
         ),
-        title: Text('Theme Screen'),
+        title: const Text('Theme Screen'),
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {

@@ -35,8 +35,8 @@ class Themes {
         activeTickMarkColor: Colors.transparent,
       ),
       checkboxTheme: CheckboxThemeData(
-        checkColor: MaterialStateProperty.all(Colors.white),
-        fillColor: MaterialStateProperty.all(defaultAppColor4),
+        checkColor: WidgetStateProperty.all(Colors.white),
+        fillColor: WidgetStateProperty.all(defaultAppColor4),
       ),
       dialogBackgroundColor: defaultAppColor,
       toggleButtonsTheme: ToggleButtonsThemeData(
@@ -76,8 +76,8 @@ class Themes {
       activeTickMarkColor: Colors.transparent,
     ),
     checkboxTheme: CheckboxThemeData(
-      checkColor: MaterialStateProperty.all(Colors.white),
-      fillColor: MaterialStateProperty.all(defaultAppColor2),
+      checkColor: WidgetStateProperty.all(Colors.white),
+      fillColor: WidgetStateProperty.all(defaultAppColor2),
     ),
     dialogBackgroundColor: defaultAppColor2,
     toggleButtonsTheme: const ToggleButtonsThemeData(
