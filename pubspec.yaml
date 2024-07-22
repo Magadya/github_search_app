@@ -18,6 +18,7 @@ dependencies:
   date_format: 2.0.7
   dio: 5.5.0+1
   get_it: 7.2.0
+  golden_toolkit: 0.15.0
   flutter_bloc: 8.1.5
   equatable: 2.0.5
   mockito: 5.4.4
