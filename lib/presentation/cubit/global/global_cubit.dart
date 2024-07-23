@@ -12,8 +12,8 @@ class GlobalCubit extends Cubit<GlobalStates> {
 
   bool isLightTheme = false;
 
-  void getAppTheme() {
-    isLightTheme = sl<MySharedPref>().getBoolean(key: MySharedKeys.theme) ?? true;
+  bool getAppTheme() {
+    return isLightTheme = sl<MySharedPref>().getBoolean(key: MySharedKeys.theme) ?? true;
   }
 
   void setAppTheme() {
