@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
         builder: (context, orientation, deviceType) {
           return MaterialApp(
             title: 'GitHub Repo Search',
-            theme: sl<GlobalCubit>().getAppTheme() ? Themes.lightTheme : Themes.darkTheme,
+            theme: sl<GlobalCubit>().getAppTheme(),
             home: BlocProvider(
               create: (context) => sl<HomeRepoBloc>(),
               child: const HomeScreen(),
