@@ -114,7 +114,9 @@ void main() {
                   description: 'No description',
                   name: 'Magadya.github.io',
                   owner: 'Magadya',
-                  openIssuesCount: 0)
+                  openIssuesCount: 0,
+                  stargazersCount: 0,
+                  avatarUrl: '')
             ]);
         return bloc;
       },

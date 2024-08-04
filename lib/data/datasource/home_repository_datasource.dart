@@ -17,7 +17,7 @@ class HomeRepositoryDatasource {
         'sort': 'stars',
         'order': 'desc',
         'page': '0',
-        'per_page': '25',
+        'per_page': '10',
       },
     );
   }

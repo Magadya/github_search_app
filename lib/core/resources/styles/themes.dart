@@ -19,7 +19,8 @@ class Themes {
           elevation: 0,
           backgroundColor: defaultAppColor,
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
+            statusBarColor: defaultAppColor2,
+            statusBarBrightness: Brightness.dark,
           )),
       canvasColor: defaultAppColor4,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -61,6 +62,7 @@ class Themes {
         backgroundColor: defaultAppColor3,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
+          statusBarBrightness: Brightness.dark,
         )),
     canvasColor: defaultAppColor,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_search_app/domain/extensions/extensions.dart';
+import 'package:github_search_app/presentation/screens/home/widgets/carousel_widget.dart';
 
 import '../../../core/resources/strings/app_strings.dart';
 import '../../bloc/home_repo/home_repo_bloc.dart';
@@ -33,7 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       drawer: const SettingsWidget(),
       appBar: AppBar(
-        title: const Text('GitHub Repo Search'),
+        title: const Text('GitHub Repo Search', style: TextStyle(color: Colors.black, fontSize: 14)),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
@@ -51,23 +53,24 @@ class _HomeScreenState extends State<HomeScreen> {
           if (state is HomeRepoLoadingState) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is HomeRepoLoadedState) {
-            return RefreshIndicator(
-              onRefresh: () async {
-                context.read<HomeRepoBloc>().add(HomeInitialRequested());
-              },
-              child: ListView.builder(
-                itemCount: state.repos.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final repo = state.repos[index];
-                  return RepoItem(
-                    repo: repo,
-                    onTap: () {
-                      context.push(DetailsRepoScreen(repo: repo));
-                    },
-                  );
-                },
-              ),
-            );
+            return CarouselWidget(list: state.repos);
+            // return RefreshIndicator(
+            //   onRefresh: () async {
+            //     context.read<HomeRepoBloc>().add(HomeInitialRequested());
+            //   },
+            //   child: ListView.builder(
+            //     itemCount: state.repos.length,
+            //     itemBuilder: (BuildContext context, int index) {
+            //       final repo = state.repos[index];
+            //       return RepoItem(
+            //         repo: repo,
+            //         onTap: () {
+            //           context.push(DetailsRepoScreen(repo: repo));
+            //         },
+            //       );
+            //     },
+            //   ),
+            // );
           } else if (state is HomeRepoErrorState) {
             return Center(child: Text(state.message));
           }

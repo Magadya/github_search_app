@@ -37,7 +37,9 @@ void main() {
           description: 'Incorrect Description',
           name: 'incorrect-name',
           owner: 'IncorrectOwner',
-          openIssuesCount: 0),
+          openIssuesCount: 0,
+          stargazersCount: 0,
+          avatarUrl: ''),
       RepoDataModel(
           htmlUrl: 'https://github.com/Incorrect/URL',
           watchersCount: 0,
@@ -45,7 +47,9 @@ void main() {
           description: 'Incorrect Description',
           name: 'incorrect-name',
           owner: 'IncorrectOwner',
-          openIssuesCount: 0),
+          openIssuesCount: 0,
+          stargazersCount: 0,
+          avatarUrl: ''),
     ];
 
     when(() => homeRepository.getTrendingRepositories()).thenAnswer((_) async => repos);
