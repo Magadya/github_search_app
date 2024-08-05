@@ -112,14 +112,17 @@ class _ItemCardState extends State<ItemCard> {
             _buildAvatarContainer(),
             SizedBox(width: 3.w),
             Expanded(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: List.generate(
-                    6,
-                        (index) => Padding(
-                      padding: EdgeInsets.only(right: index == 5 ? 0 : 2.w),
-                      child: _buildTestImageContainer(),
+              child: SizedBox(
+                width: 24.h + 4.w,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(
+                      6,
+                      (index) => Padding(
+                        padding: EdgeInsets.only(right: index == 5 ? 0 : 1.w),
+                        child: _buildTestImageContainer(),
+                      ),
                     ),
                   ),
                 ),
@@ -134,7 +137,7 @@ class _ItemCardState extends State<ItemCard> {
   Widget _buildAvatarContainer() {
     return Container(
       height: 6.h,
-      width: 6.h, // Add width to maintain the circle shape
+      width: 6.h,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         image: DecorationImage(
@@ -146,7 +149,6 @@ class _ItemCardState extends State<ItemCard> {
       ),
     );
   }
-
 
   Widget _buildTestImageContainer() {
     return Container(
