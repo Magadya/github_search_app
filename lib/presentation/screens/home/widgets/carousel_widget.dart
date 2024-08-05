@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:github_search_app/domain/extensions/extensions.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../data/models/repo_data_model.dart';
+import '../../details_repo/details_repo_screen.dart';
 import 'item_card.dart';
 
 class CarouselWidget extends StatefulWidget {
@@ -36,10 +38,15 @@ class _CarouselWidgetState extends State<CarouselWidget> {
           carouselController: _pageController,
           itemCount: widget.list.length,
           itemBuilder: (context, index, _) {
-            return ItemCard(
-              item: widget.list[index],
-              key: ValueKey<int>(index), // Использование ValueKey для уникальности
-              isVisible: index == currentSlider, // Передача состояния видимости
+            return GestureDetector(
+              onTap: () {
+                context.push(DetailsRepoScreen(repo: widget.list[index]));
+              },
+              child: ItemCard(
+                item: widget.list[index],
+                key: ValueKey<int>(index),
+                isVisible: index == currentSlider,
+              ),
             );
           },
         ),
