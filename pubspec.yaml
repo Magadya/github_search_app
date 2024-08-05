@@ -26,7 +26,6 @@ dependencies:
   mockito: 5.4.4
   mocktail: 1.0.3
   http: 1.2.1
-  provider: 6.1.2
   shared_preferences: 2.2.0
   sliding_up_panel: 2.0.0+1
   sizer: 2.0.15

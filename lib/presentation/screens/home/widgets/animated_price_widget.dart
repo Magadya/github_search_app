@@ -6,10 +6,10 @@ import '../../../../core/resources/styles/colors.dart';
 class AnimatedPriceWidget extends StatefulWidget {
   final bool isPanelOpen;
 
-  AnimatedPriceWidget(this.isPanelOpen);
+  const AnimatedPriceWidget(this.isPanelOpen, {super.key});
 
   @override
-  _AnimatedPriceWidgetState createState() => _AnimatedPriceWidgetState();
+  State<AnimatedPriceWidget> createState() => _AnimatedPriceWidgetState();
 }
 
 class _AnimatedPriceWidgetState extends State<AnimatedPriceWidget> with SingleTickerProviderStateMixin {

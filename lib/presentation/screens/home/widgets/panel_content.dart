@@ -146,10 +146,10 @@ class _PanelContentState extends State<PanelContent> with TickerProviderStateMix
             opacity: _fadeAnimation,
             child: Container(
               height: 10.h,
-              child: BarChartSample3(),
               padding: EdgeInsets.symmetric(
                 horizontal: 2.h,
               ),
+              child: BarChartSample3(),
             ),
           ),
           SizedBox(height: 5.h),
