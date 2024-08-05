@@ -5,8 +5,6 @@ import 'package:sizer/sizer.dart';
 import '../../../../core/resources/app_images.dart';
 import '../../../../core/resources/styles/colors.dart';
 
-
-
 class ItemCard extends StatefulWidget {
   final RepoDataModel item;
   final bool isVisible;
@@ -109,26 +107,51 @@ class _ItemCardState extends State<ItemCard> {
       child: AnimatedOpacity(
         opacity: widget.isVisible ? 1.0 : 0.0,
         duration: const Duration(milliseconds: 300),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: List.generate(
-              6,
-                  (index) => Padding(
-                padding: EdgeInsets.only(right: index == 5 ? 0 : 4.w),
-                child: _buildTestImageContainer(),
+        child: Row(
+          children: [
+            _buildAvatarContainer(),
+            SizedBox(width: 3.w),
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(
+                    6,
+                        (index) => Padding(
+                      padding: EdgeInsets.only(right: index == 5 ? 0 : 2.w),
+                      child: _buildTestImageContainer(),
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
   }
 
+  Widget _buildAvatarContainer() {
+    return Container(
+      height: 6.h,
+      width: 6.h, // Add width to maintain the circle shape
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        image: DecorationImage(
+          image: (widget.item.avatarUrl ?? '').isNotEmpty
+              ? NetworkImage(widget.item.avatarUrl!) as ImageProvider
+              : const AssetImage(AppImages.image1),
+          fit: BoxFit.fill,
+        ),
+      ),
+    );
+  }
+
+
   Widget _buildTestImageContainer() {
     return Container(
-      width: 7.h,
-      height: 7.h,
+      width: 6.h,
+      height: 6.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         image: const DecorationImage(

@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 } else if (state is HomeRepoErrorState) {
                   return Center(child: Text(state.message));
                 }
-                return const Center(child: Text(AppStrings.pullToRefresh));
+                return const Center(child: CircularProgressIndicator());
               },
             ),
             panelBuilder: (sc) => PanelContent(sc, _isPanelOpen),

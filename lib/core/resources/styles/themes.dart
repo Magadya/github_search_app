@@ -19,7 +19,7 @@ class Themes {
           elevation: 0,
           backgroundColor: defaultAppColor,
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: defaultAppColor2,
+            statusBarColor: defaultBlack,
             statusBarBrightness: Brightness.dark,
           )),
       canvasColor: defaultAppColor4,
