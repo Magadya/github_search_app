@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_search_app/domain/extensions/extensions.dart';
+import 'package:github_search_app/presentation/screens/home/widgets/carousel_widget.dart';
 import 'package:github_search_app/presentation/screens/home/widgets/panel_content.dart';
 import 'package:github_search_app/presentation/screens/home/widgets/settings_widget.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
+import '../../../core/resources/strings/app_strings.dart';
 import '../../bloc/home_repo/home_repo_bloc.dart';
 import '../../bloc/home_repo/home_repo_event.dart';
+import '../../bloc/home_repo/home_repo_state.dart';
 import '../../bloc/search_repo/search_repo_bloc.dart';
 import '../search_repo/search_screen.dart';
 
@@ -19,10 +22,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final double _initFabHeight = 120.0;
-  double _fabHeight = 0;
   double _panelHeightOpen = 0;
-  double _panelHeightClosed = 95.0;
+  final double _panelHeightClosed = 95.0;
   bool _isPanelOpen = false;
 
   @override
@@ -31,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<HomeRepoBloc>().add(HomeInitialRequested());
     });
-    _fabHeight = _initFabHeight;
   }
 
   @override
@@ -63,11 +63,22 @@ class _HomeScreenState extends State<HomeScreen> {
             parallaxEnabled: true,
             parallaxOffset: .5,
             color: theme.primaryColor,
+            body: BlocBuilder<HomeRepoBloc, HomeRepoState>(
+              builder: (context, state) {
+                if (state is HomeRepoLoadingState) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state is HomeRepoLoadedState) {
+                  return CarouselWidget(list: state.repos);
+                } else if (state is HomeRepoErrorState) {
+                  return Center(child: Text(state.message));
+                }
+                return const Center(child: Text(AppStrings.pullToRefresh));
+              },
+            ),
             panelBuilder: (sc) => PanelContent(sc, _isPanelOpen),
             borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0)),
             onPanelSlide: (double pos) {
               setState(() {
-                _fabHeight = pos * (_panelHeightOpen - _panelHeightClosed) + _initFabHeight;
                 _isPanelOpen = pos >= 1.0;
               });
             },

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'animated_price_widget.dart';
+import '../../../../core/resources/styles/colors.dart';
 
+import 'animated_price_widget.dart';
 
 class BuildTestWidget extends StatefulWidget {
   final ThemeData theme;
@@ -11,7 +12,7 @@ class BuildTestWidget extends StatefulWidget {
   const BuildTestWidget(this.theme, this.isPanelOpen, this.index, {super.key});
 
   @override
-  State<BuildTestWidget>  createState() => _BuildTestWidgetState();
+  State<BuildTestWidget> createState() => _BuildTestWidgetState();
 }
 
 class _BuildTestWidgetState extends State<BuildTestWidget> with SingleTickerProviderStateMixin {
@@ -84,9 +85,15 @@ class _BuildTestWidgetState extends State<BuildTestWidget> with SingleTickerProv
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('JKF - LAX', style: widget.theme.textTheme.titleSmall),
+                            Text(
+                              'JKF - LAX',
+                              style: widget.theme.textTheme.titleSmall?.copyWith(color: defaultBlack),
+                            ),
                             SizedBox(height: 2.h),
-                            Text('10:25 - 12:50', style: widget.theme.textTheme.bodySmall),
+                            Text(
+                              '10:25 - 12:50',
+                              style: widget.theme.textTheme.bodySmall?.copyWith(color: defaultBlack),
+                            ),
                           ],
                         ),
                         SizedBox(width: 2.h),
@@ -101,9 +108,15 @@ class _BuildTestWidgetState extends State<BuildTestWidget> with SingleTickerProv
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('LAX - JFK', style: widget.theme.textTheme.titleSmall),
+                            Text(
+                              'LAX - JFK',
+                              style: widget.theme.textTheme.titleSmall?.copyWith(color: defaultBlack),
+                            ),
                             SizedBox(height: 2.h),
-                            Text('13:35 - 16:00', style: widget.theme.textTheme.bodySmall),
+                            Text(
+                              '13:35 - 16:00',
+                              style: widget.theme.textTheme.bodySmall?.copyWith(color: defaultBlack),
+                            ),
                           ],
                         ),
                       ],

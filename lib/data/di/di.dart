@@ -28,4 +28,8 @@ Future<void> init() async {
   sl.registerLazySingleton<HomeRepoBloc>(
         () => HomeRepoBloc(homeRepository: HomeRepoDataSourceImpl()),
   );
+  sl.registerLazySingleton<SearchRepoDataSourceImpl>(
+        () => SearchRepoDataSourceImpl(),
+  );
+
 }

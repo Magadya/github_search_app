@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_search_app/domain/extensions/extensions.dart';
+import 'package:github_search_app/presentation/screens/home/widgets/bar_chart.dart';
 
 import 'package:sizer/sizer.dart';
 import '../../../bloc/home_repo/home_repo_bloc.dart';
@@ -141,13 +142,24 @@ class _PanelContentState extends State<PanelContent> with TickerProviderStateMix
             ),
           ),
           SizedBox(height: 5.h),
+          FadeTransition(
+            opacity: _fadeAnimation,
+            child: Container(
+              height: 10.h,
+              child: BarChartSample3(),
+              padding: EdgeInsets.symmetric(
+                horizontal: 2.h,
+              ),
+            ),
+          ),
+          SizedBox(height: 5.h),
           SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
               children: List.generate(
-                5,
-                    (index) => Padding(
-                  padding: EdgeInsets.only(bottom: index == 4 ? 0 : 4.w),
+                4,
+                (index) => Padding(
+                  padding: EdgeInsets.only(bottom: 4.w),
                   child: BuildTestWidget(theme, widget.isPanelOpen, index),
                 ),
               ),

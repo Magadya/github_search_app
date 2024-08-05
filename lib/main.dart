@@ -4,14 +4,11 @@ import 'package:github_search_app/core/local/my_shared_preferences.dart';
 import 'package:github_search_app/presentation/bloc/home_repo/home_repo_bloc.dart';
 import 'package:github_search_app/presentation/cubit/global/global_cubit.dart';
 import 'package:github_search_app/presentation/screens/home/home_screen.dart';
-import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import 'core/resources/styles/themes.dart';
 import 'data/di/di.dart';
 
 import 'presentation/bloc/search_repo/search_repo_bloc.dart';
-import 'data/repositories/search_repository_impl.dart';
 import 'presentation/cubit/global/global_state.dart';
 
 Future<void> main() async {
@@ -25,9 +22,6 @@ Future<void> main() async {
       ),
       BlocProvider(
         create: (context) => sl<GlobalCubit>(),
-      ),
-      Provider(
-        create: (context) => sl<SearchRepoDataSourceImpl>(),
       ),
     ],
     child: const MyApp(),
