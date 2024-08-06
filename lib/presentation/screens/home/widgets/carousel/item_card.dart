@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:github_search_app/data/models/repo_data_model.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../core/resources/app_images.dart';
-import '../../../../core/resources/styles/colors.dart';
+import '../../../../../core/resources/app_images.dart';
+import '../../../../../core/resources/styles/colors.dart';
 
 class ItemCard extends StatefulWidget {
   final RepoDataModel item;

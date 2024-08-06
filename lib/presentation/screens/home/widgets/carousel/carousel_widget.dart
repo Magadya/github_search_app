@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:github_search_app/domain/extensions/extensions.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../data/models/repo_data_model.dart';
-import '../../details_repo/details_repo_screen.dart';
+import '../../../../../data/models/repo_data_model.dart';
+import '../../../details_repo/details_repo_screen.dart';
 import 'item_card.dart';
 
 class CarouselWidget extends StatefulWidget {

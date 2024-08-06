@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_search_app/domain/extensions/extensions.dart';
-import 'package:github_search_app/presentation/screens/home/widgets/bar_chart.dart';
+import 'package:github_search_app/presentation/screens/home/widgets/panel/bar_chart.dart';
 
 import 'package:sizer/sizer.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-import '../../../bloc/home_repo/home_repo_bloc.dart';
-import '../../../bloc/home_repo/home_repo_event.dart';
-import '../../../bloc/search_repo/search_repo_bloc.dart';
-import '../../search_repo/search_screen.dart';
+import '../../../../bloc/home_repo/home_repo_bloc.dart';
+import '../../../../bloc/home_repo/home_repo_event.dart';
+import '../../../../bloc/search_repo/search_repo_bloc.dart';
+import '../../../search_repo/search_screen.dart';
 import 'build_widget_test.dart';
 
 class PanelContent extends StatefulWidget {

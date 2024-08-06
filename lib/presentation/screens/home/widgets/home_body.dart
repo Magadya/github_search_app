@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'package:github_search_app/presentation/screens/home/widgets/carousel_widget.dart';
-import 'package:github_search_app/presentation/screens/home/widgets/panel_content.dart';
+import 'package:github_search_app/presentation/screens/home/widgets/carousel/carousel_widget.dart';
+import 'package:github_search_app/presentation/screens/home/widgets/panel/panel_content.dart';
 import '../../../bloc/home_repo/home_repo_bloc.dart';
 import '../../../bloc/home_repo/home_repo_state.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import '../../../../core/resources/styles/colors.dart';
+import '../../../../../core/resources/styles/colors.dart';
 
 import 'animated_price_widget.dart';
 
