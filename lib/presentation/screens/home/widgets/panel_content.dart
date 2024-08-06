@@ -4,6 +4,7 @@ import 'package:github_search_app/domain/extensions/extensions.dart';
 import 'package:github_search_app/presentation/screens/home/widgets/bar_chart.dart';
 
 import 'package:sizer/sizer.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 import '../../../bloc/home_repo/home_repo_bloc.dart';
 import '../../../bloc/home_repo/home_repo_event.dart';
 import '../../../bloc/search_repo/search_repo_bloc.dart';
@@ -13,8 +14,9 @@ import 'build_widget_test.dart';
 class PanelContent extends StatefulWidget {
   final ScrollController scrollController;
   final bool isPanelOpen;
+  final PanelController panelController;
 
-  const PanelContent(this.scrollController, this.isPanelOpen, {super.key});
+  const PanelContent(this.scrollController, this.isPanelOpen,this.panelController, {super.key});
 
   @override
   State<PanelContent> createState() => _PanelContentState();
@@ -95,12 +97,14 @@ class _PanelContentState extends State<PanelContent> with TickerProviderStateMix
               IconButton(
                 icon: const Icon(Icons.home, color: Colors.white),
                 onPressed: () {
+                  closePanel();
                   context.read<HomeRepoBloc>().add(HomeInitialRequested());
                 },
               ),
               IconButton(
                 icon: const Icon(Icons.search, color: Colors.white),
                 onPressed: () {
+                  closePanel();
                   context.push(BlocProvider.value(
                     value: BlocProvider.of<SearchRepoBloc>(context, listen: false),
                     child: const SearchScreen(),
@@ -128,12 +132,12 @@ class _PanelContentState extends State<PanelContent> with TickerProviderStateMix
                       Text('Jan, 2020', style: theme.textTheme.bodySmall),
                     ],
                   ),
-                  Container(
-                    height: 7.h,
-                    width: 7.h,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.black),
-                    child: RotationTransition(
-                      turns: _rotationAnimation,
+                  RotationTransition(
+                    turns: _rotationAnimation,
+                    child: Container(
+                      height: 7.h,
+                      width: 7.h,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.black),
                       child: Icon(Icons.add, color: Colors.white),
                     ),
                   ),
@@ -168,5 +172,9 @@ class _PanelContentState extends State<PanelContent> with TickerProviderStateMix
         ],
       ),
     );
+  }
+
+  void closePanel(){
+    if (widget.isPanelOpen)  widget.panelController.close();
   }
 }
